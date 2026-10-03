@@ -12,28 +12,58 @@
 
 <body>
 
-    <div class="container">
+    <div class="app-shell">
 
-        <header>
-            <div>
+        <header class="topbar">
+            <div class="title-group">
+                <span class="eyebrow">Sistem Akademik</span>
                 <h1>Student Management System</h1>
                 <p>Manajemen Data Siswa</p>
             </div>
 
-            <button id="darkMode">
-                🌙 Dark Mode
-            </button>
+            <div class="header-actions">
+                <span class="status-pill">Live data</span>
+                <button id="darkMode" type="button">
+                    🌙 Dark Mode
+                </button>
+            </div>
         </header>
 
+        <div class="summary-grid">
+            <div class="stat-card accent-blue">
+                <div class="card-icon">👥</div>
+                <div>
+                    <p>Total Siswa</p>
+                    <h3 id="jumlahSiswa">0</h3>
+                </div>
+            </div>
 
-        <!-- PESAN -->
+            <div class="stat-card accent-purple">
+                <div class="card-icon">🏫</div>
+                <div>
+                    <p>Kelas Tersedia</p>
+                    <h3 id="kelasCount">0</h3>
+                </div>
+            </div>
+
+            <div class="stat-card accent-green">
+                <div class="card-icon">✅</div>
+                <div>
+                    <p>Status</p>
+                    <h3>Aktif</h3>
+                </div>
+            </div>
+        </div>
+
         <div id="message"></div>
 
-
-        <!-- FORM -->
-        <div class="card">
-
-            <h2 id="formTitle">Tambah Siswa</h2>
+        <section class="panel form-panel">
+            <div class="panel-header">
+                <div>
+                    <span class="eyebrow">Formulir</span>
+                    <h2 id="formTitle">Tambah Siswa</h2>
+                </div>
+            </div>
 
             <form id="formSiswa">
 
@@ -41,8 +71,8 @@
 
                 <div class="form-grid">
 
-                    <div>
-                        <label>NIS</label>
+                    <div class="field-group">
+                        <label for="nis">NIS</label>
                         <input
                             type="text"
                             id="nis"
@@ -51,8 +81,8 @@
                         >
                     </div>
 
-                    <div>
-                        <label>Nama</label>
+                    <div class="field-group">
+                        <label for="nama">Nama</label>
                         <input
                             type="text"
                             id="nama"
@@ -61,8 +91,8 @@
                         >
                     </div>
 
-                    <div>
-                        <label>Kelas</label>
+                    <div class="field-group">
+                        <label for="kelas">Kelas</label>
                         <input
                             type="text"
                             id="kelas"
@@ -71,8 +101,8 @@
                         >
                     </div>
 
-                    <div>
-                        <label>Jurusan</label>
+                    <div class="field-group">
+                        <label for="jurusan">Jurusan</label>
                         <input
                             type="text"
                             id="jurusan"
@@ -83,16 +113,16 @@
 
                 </div>
 
-                <label>Alamat</label>
-
-                <textarea
-                    id="alamat"
-                    placeholder="Masukkan alamat"
-                    required
-                ></textarea>
+                <div class="field-group full-width">
+                    <label for="alamat">Alamat</label>
+                    <textarea
+                        id="alamat"
+                        placeholder="Masukkan alamat"
+                        required
+                    ></textarea>
+                </div>
 
                 <div class="form-button">
-
                     <button type="submit" id="btnSimpan">
                         💾 Simpan
                     </button>
@@ -104,38 +134,24 @@
                     >
                         Batal
                     </button>
-
                 </div>
 
             </form>
+        </section>
 
-        </div>
-
-
-        <!-- DATA -->
-        <div class="card">
-
-            <div class="data-header">
-
+        <section class="panel table-panel">
+            <div class="panel-header table-header">
                 <div>
+                    <span class="eyebrow">Database</span>
                     <h2>Daftar Siswa</h2>
-
-                    <p>
-                        Total siswa:
-                        <strong id="jumlahSiswa">0</strong>
-                    </p>
                 </div>
 
-                <button onclick="loadSiswa()">
+                <button class="btn-secondary" type="button" onclick="loadSiswa()">
                     🔄 Refresh
                 </button>
-
             </div>
 
-
-            <!-- SEARCH -->
             <div class="filter">
-
                 <input
                     type="text"
                     id="search"
@@ -149,21 +165,14 @@
                 >
                     <option value="">Semua Kelas</option>
                 </select>
-
             </div>
 
-
-            <!-- LOADING -->
             <div id="loading">
                 ⏳ Mengambil data...
             </div>
 
-
-            <!-- TABLE -->
             <div class="table-container">
-
                 <table>
-
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -175,17 +184,12 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-
                     <tbody id="dataSiswa"></tbody>
-
                 </table>
-
             </div>
-
-        </div>
+        </section>
 
     </div>
-
 
     <script src="script.js"></script>
 

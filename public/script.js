@@ -54,6 +54,15 @@ function tampilkanSiswa(data) {
     document.getElementById('jumlahSiswa').textContent =
         data.length;
 
+    const kelasUnik = [...new Set(
+        data
+            .map(siswa => siswa.kelas)
+            .filter(Boolean)
+    )];
+
+    document.getElementById('kelasCount').textContent =
+        kelasUnik.length;
+
     if (data.length === 0) {
 
         dataSiswa.innerHTML = `
